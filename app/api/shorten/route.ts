@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     const existing = await db.collection("urls").findOne({ alias });
     if (existing) {
 
-        return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
+        return NextResponse.json({ error: "Alias already exists" }, { status: 400 });
     }
 
     await db.collection("urls").insertOne({ alias, url });
